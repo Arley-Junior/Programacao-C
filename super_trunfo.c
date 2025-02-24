@@ -2,13 +2,14 @@
 
 int main (){
 
-    // Como o objetivo da tarefa era ler registrar e ler duas cartas, inicialmente eu
+    // Como o objetivo da tarefa era ler e registrar duas cartas, inicialmente eu
     // havia declarado somente, uma variavel para as duas cartas, mas depois percebi
     // que ficaria melhor, cada carta ter sua propria variavel 
 
-    int populacao1, pontosturisticos1, populacao2, pontosturisticos2;
+    float populacao1, pontosturisticos1, populacao2, pontosturisticos2;
     float areakm1, pib1, areakm2, pib2;
-    char estado1[2], cidade1[15], idcarta[10], estado2[2], cidade2[15], idcarta2[4];
+    float densidade1, densidade2, percapita1, percapita2;
+    char estado1[30], cidade1[15], idcarta[15], estado2[2], cidade2[15], idcarta2[30];
 
     // Como na explicacao da atividade a visualizao das informacoes das cartas era uma em baixo
     // da outra, decidi dividir cada processo em dois blocos, sendo o primeiro a coleta de dados
@@ -27,7 +28,7 @@ int main (){
     scanf(" %s", cidade1 );    
 
     printf("Qual a População desta Cidade ?:");
-    scanf(" %d", &populacao1 );    
+    scanf(" %f", &populacao1 );    
 
     printf("Qual a Area (km²) desta Cidade ?");
     scanf(" %f", &areakm1 ); 
@@ -36,7 +37,7 @@ int main (){
     scanf(" %f", &pib1 );  
     
     printf("Quantos Pontos Turísticos essa Cidade Possui ?");
-    scanf(" %d", &pontosturisticos1 );  
+    scanf(" %f", &pontosturisticos1 );  
     
     printf("Carta 2\n");
 
@@ -50,7 +51,7 @@ int main (){
     scanf(" %s", cidade2 );    
 
     printf("Qual a População desta Cidade ?:");
-    scanf(" %d", &populacao2 );    
+    scanf(" %f", &populacao2 );    
 
     printf("Qual a Area (km²) desta Cidade ?");
     scanf(" %f", &areakm2 ); 
@@ -59,25 +60,42 @@ int main (){
     scanf(" %f", &pib2 );  
     
     printf("Quantos Pontos Turísticos essa Cidade Possui ?");
-    scanf(" %d", &pontosturisticos2 );  
+    scanf(" %f", &pontosturisticos2 );  
+
+    //aqui so fiz tratar os dados que ja existiam dentro do codigo inicial, usando 
+    //os as funcoes de matematicas e assim exibir os resultaod solicitados no desafio aventureiro
+    densidade1 = populacao1 / areakm1;
+    densidade2 = populacao2 / areakm2;    
+
+    percapita1 = pib1 / populacao1;
+    percapita2 = pib2 / populacao2;
     
     
     printf("Carta 1\n");
     printf("Seu Estado é: %s\n", estado1);
     printf("O Código é: %s\n", idcarta);
     printf("Nome da Cidade: %s\n", cidade1);
-    printf("População: %d\n", populacao1);
-    printf("Esta Cidade Tem: %f km²\n", areakm1);
+    printf("População: %f\n", populacao1);
+    printf("Esta Cidade Tem: %.2f km²\n", areakm1);
     printf("PIB: %.2f Bilhões de Reais\n", pib1);
-    printf("PIB: %d\n", pontosturisticos1);
+    printf("Pontos Turisticos: %f\n", pontosturisticos1);
+    printf("A Densidade Populacional e %.2f hab/km²: \n", densidade1);
+    printf("PIB per Capita: %.2f\n", percapita1);
 
     printf("Carta 2\n");
     printf("Seu Estado é: %s\n", estado2);
     printf("O Código é: %s\n", idcarta2);
     printf("Nome da Cidade: %s\n", cidade2);
-    printf("População: %d\n", populacao2);
-    printf("Esta Cidade Tem: %f km²\n", areakm2);
+    printf("População: %.2f\n", populacao2);
+    printf("Esta Cidade Tem: %.2f km²\n", areakm2);
     printf("PIB: %.2f Bilhões de Reais\n", pib2);
-    printf("PIB: %d\n", pontosturisticos2);
+    printf("Pontos Turisticos: %.2f\n", pontosturisticos2);
+    printf("A Densidade Populacional e %.2f hab/km²: \n", densidade2);
+    printf("PIB per Capita: %.2f\n", percapita2);
+
+
+
+    
+    
 }
 
