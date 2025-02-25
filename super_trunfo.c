@@ -2,12 +2,14 @@
 
 int main (){
 
-    // Como o objetivo da tarefa era ler e registrar duas cartas, inicialmente eu
+    // Como o objetivo da tarefa era ler registrar e ler duas cartas, inicialmente eu
     // havia declarado somente, uma variavel para as duas cartas, mas depois percebi
     // que ficaria melhor, cada carta ter sua propria variavel 
-
-    float populacao1, pontosturisticos1, populacao2, pontosturisticos2;
-    float areakm1, pib1, areakm2, pib2;
+    int pontosturisticos1, pontosturisticos2;
+    float resultadopopulacao, resultadoarea, resultadopib, resultadopontosturisticos;
+    float resultadodensidade, resultadopercapita, resultadoinverso, resultadopoder;
+    float populacao1, populacao2, superpoder1, superpoder2;
+    float areakm1, pib1, areakm2, pib2, inversodensidade1, inversodensidade2;
     float densidade1, densidade2, percapita1, percapita2;
     char estado1[30], cidade1[15], idcarta[15], estado2[2], cidade2[15], idcarta2[30];
 
@@ -37,7 +39,7 @@ int main (){
     scanf(" %f", &pib1 );  
     
     printf("Quantos Pontos Turísticos essa Cidade Possui ?");
-    scanf(" %f", &pontosturisticos1 );  
+    scanf(" %d", &pontosturisticos1 );  
     
     printf("Carta 2\n");
 
@@ -60,17 +62,25 @@ int main (){
     scanf(" %f", &pib2 );  
     
     printf("Quantos Pontos Turísticos essa Cidade Possui ?");
-    scanf(" %f", &pontosturisticos2 );  
+    scanf(" %d", &pontosturisticos2 );  
 
-    //aqui so fiz tratar os dados que ja existiam dentro do codigo inicial, usando 
-    //os as funcoes de matematicas e assim exibir os resultaod solicitados no desafio aventureiro
+    //Densidade Populacional e PIB per Capita
     densidade1 = populacao1 / areakm1;
-    densidade2 = populacao2 / areakm2;    
-
+    densidade2 = populacao2 / areakm2;
     percapita1 = pib1 / populacao1;
     percapita2 = pib2 / populacao2;
+
+    //Inverso da Densidade
+    inversodensidade1 = 1.0 / densidade1;
+    inversodensidade2 = 1.0 / densidade2;
+
+    //Super Poder Cartas
+    superpoder1 = populacao1 + pib1 + areakm1 + pontosturisticos1 + percapita1 + inversodensidade1;    
+    superpoder2 = populacao2 + pib2 + areakm2 + pontosturisticos2 + percapita2 + inversodensidade2;
     
+
     
+    //Exibição da Carta 1
     printf("Carta 1\n");
     printf("Seu Estado é: %s\n", estado1);
     printf("O Código é: %s\n", idcarta);
@@ -78,10 +88,14 @@ int main (){
     printf("População: %f\n", populacao1);
     printf("Esta Cidade Tem: %.2f km²\n", areakm1);
     printf("PIB: %.2f Bilhões de Reais\n", pib1);
-    printf("Pontos Turisticos: %f\n", pontosturisticos1);
+    printf("Pontos Turisticos: %d\n", pontosturisticos1);
     printf("A Densidade Populacional e %.2f hab/km²: \n", densidade1);
     printf("PIB per Capita: %.2f\n", percapita1);
+    printf("Densidade Invertida: %.2f\n", inversodensidade1);
+    printf("SUPER PODER!: %.2f\n", superpoder1);
 
+
+    //Exibição da Carta 2
     printf("Carta 2\n");
     printf("Seu Estado é: %s\n", estado2);
     printf("O Código é: %s\n", idcarta2);
@@ -89,13 +103,41 @@ int main (){
     printf("População: %.2f\n", populacao2);
     printf("Esta Cidade Tem: %.2f km²\n", areakm2);
     printf("PIB: %.2f Bilhões de Reais\n", pib2);
-    printf("Pontos Turisticos: %.2f\n", pontosturisticos2);
+    printf("Pontos Turisticos: %d\n", pontosturisticos2);
     printf("A Densidade Populacional e %.2f hab/km²: \n", densidade2);
     printf("PIB per Capita: %.2f\n", percapita2);
+    printf("Densidade Invertida: %.2f\n", inversodensidade2);
+    printf("SUPER PODER!: %.2f\n", superpoder2);
 
+    //Comparacoes Cartas
+    resultadopopulacao = populacao1 >= populacao2;
+    resultadoarea = areakm1 >= areakm2;
+    resultadopib = pib1 >= pib2;
+    resultadopontosturisticos = pontosturisticos1 >= pontosturisticos2;
+    resultadodensidade = densidade1 >= densidade2;
+    resultadopercapita = percapita1 >= percapita2;
+    resultadoinverso = inversodensidade1 <= inversodensidade2;
+    resultadopoder = superpoder1 >= superpoder2;
 
+    //Exibicao dos Resultados
+    printf("Hora da Verdade, Vamos Comparar as Cartas do Super Trunfo\n");
+    printf("Se o Resultado for 1 a Carta 1 foi Vencedor, caso for 0 a Carta 2 foi Vendora\n");
+    printf("Boa sorte!\n");
+    printf("Vencedor Populacao e: %d \n", resultadopopulacao);
+    printf("Vencedor Areakm² e: %d \n", resultadoarea);
+    printf("Vencedor PIB e: %d \n", resultadopib);
+    printf("Vencedor Pontos Turisticos e: %d \n", resultadopontosturisticos);
+    printf("Vencedor Densidade e: %d \n", resultadodensidade);
+    printf("Vencedor PIB Per Capita e: %d \n", resultadopercapita);
+    printf("Vencedor Densidade Inversa e: %d \n", resultadoinverso);
+    printf("Vencedor SUPER PODER! e: %d \n", resultadopoder);
 
     
+
+
+
+
+    return 0;
     
 }
 
